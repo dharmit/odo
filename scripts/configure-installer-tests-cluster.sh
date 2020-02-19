@@ -41,7 +41,22 @@ if [ -z $CI ]; then
 fi
 
 # Setup the cluster for Operator tests
-
+## First, enable a cluster-wide operator
+oc create -f - <<EOF
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  generation: 1
+  name: mongodb-enterprise
+  namespace: openshift-operators
+spec:
+  channel: stable
+  installPlanApproval: Automatic
+  name: mongodb-enterprise
+  source: certified-operators
+  sourceNamespace: openshift-marketplace
+  startingCSV: mongodb-enterprise.v1.2.4
+EOF
 ## Create a new namesapce which will be used for OperatorHub checks
 oc new-project $CI_OPERATOR_HUB_PROJECT
 ## Let developer user have access to the project
