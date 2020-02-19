@@ -55,7 +55,6 @@ spec:
   name: mongodb-enterprise
   source: certified-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: mongodb-enterprise.v1.2.4
 EOF
 ## Create a new namesapce which will be used for OperatorHub checks
 oc new-project $CI_OPERATOR_HUB_PROJECT
