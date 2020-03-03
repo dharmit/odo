@@ -52,7 +52,7 @@ CI_K8S_VERSION=$(oc version -o yaml | tail | awk '/gitVersion/')
 
 ## If we're running on 4.1, perform relevant steps
 
-if [ $CI_K8S_VERSION =~ 1.13 ]; then
+if [[ $CI_K8S_VERSION =~ 1.13 ]]; then
     sh $SETUP_OPERATORS_41
 else
     ### First, enable a cluster-wide mongo operator
