@@ -9,7 +9,7 @@ import (
 	"github.com/openshift/odo/pkg/odo/cli/catalog/util"
 	"github.com/openshift/odo/pkg/odo/genericclioptions"
 	"github.com/openshift/odo/pkg/odo/util/experimental"
-	olm "github.com/operator-framework/operator-lifecycle-manager/pkg/api/apis/operators/v1alpha1"
+	olm "github.com/operator-framework/operator-lifecycle-manager/pkg/api/apis/operators"
 	"github.com/spf13/cobra"
 )
 

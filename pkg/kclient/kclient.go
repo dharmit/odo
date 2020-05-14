@@ -11,7 +11,7 @@ import (
 	"k8s.io/client-go/tools/clientcmd"
 
 	// api clientsets
-	operatorsclientset "github.com/operator-framework/operator-lifecycle-manager/pkg/api/client/clientset/versioned/typed/operators/v1alpha1"
+	operatorsclientset "github.com/operator-framework/operator-lifecycle-manager/pkg/api/client/clientset/internalversion/typed/operators/internalversion"
 )
 
 const (
@@ -28,7 +28,7 @@ type Client struct {
 	KubeConfig       clientcmd.ClientConfig
 	KubeClientConfig *rest.Config
 	Namespace        string
-	OperatorClient   *operatorsclientset.OperatorsV1alpha1Client
+	OperatorClient   *operatorsclientset.OperatorsClient
 	// DynamicClient interacts with client-go's `dynamic` package. It is used
 	// to dynamically create service from an operator. It can take an arbitrary
 	// yaml and create k8s/OpenShift resource from it.

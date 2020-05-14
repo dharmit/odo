@@ -23,7 +23,7 @@ import (
 	"github.com/spf13/cobra"
 
 	scv1beta1 "github.com/kubernetes-sigs/service-catalog/pkg/apis/servicecatalog/v1beta1"
-	olmv1alpha1 "github.com/operator-framework/operator-lifecycle-manager/pkg/api/apis/operators/v1alpha1"
+	olm "github.com/operator-framework/operator-lifecycle-manager/pkg/api/apis/operators"
 	"k8s.io/klog"
 	ktemplates "k8s.io/kubectl/pkg/util/templates"
 )
@@ -459,7 +459,7 @@ func groupVersionALMExample(example map[string]interface{}) (group, version stri
 	return
 }
 
-func resourceFromCSV(csv olmv1alpha1.ClusterServiceVersion, crdName string) (resource string) {
+func resourceFromCSV(csv olm.ClusterServiceVersion, crdName string) (resource string) {
 	for _, crd := range csv.Spec.CustomResourceDefinitions.Owned {
 		if crd.Kind == crdName {
 			resource = strings.Split(crd.Name, ".")[0]
@@ -478,7 +478,7 @@ func getAlmExample(almExamples []map[string]interface{}, crd, operator string) (
 	return nil, errors.Errorf("Could not find example yaml definition for %q service in %q operator's definition.\nPlease provide a file containing yaml specification to start the service from operator\n", crd, operator)
 }
 
-func doesCRExist(kind string, csvs *olmv1alpha1.ClusterServiceVersionList) (olmv1alpha1.ClusterServiceVersion, error) {
+func doesCRExist(kind string, csvs *olm.ClusterServiceVersionList) (olm.ClusterServiceVersion, error) {
 	for _, csv := range csvs.Items {
 		for _, operatorCR := range csv.Spec.CustomResourceDefinitions.Owned {
 			if kind == operatorCR.Kind {
@@ -486,7 +486,7 @@ func doesCRExist(kind string, csvs *olmv1alpha1.ClusterServiceVersionList) (olmv
 			}
 		}
 	}
-	return olmv1alpha1.ClusterServiceVersion{}, errors.New("Could not find the requested cluster resource")
+	return olm.ClusterServiceVersion{}, errors.New("Could not find the requested cluster resource")
 
 }
 
