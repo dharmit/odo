@@ -22,15 +22,10 @@
 Fixes #?
 
 **PR acceptance criteria**:
+(Please explain the reason if answer to any of the below is "No")
 
-- [ ] Unit test 
-
-- [ ] Integration test 
-
-- [ ] Documentation 
-
-- [ ] Update changelog
-
-- [ ] I have read the [test guidelines](https://github.com/openshift/odo/blob/master/docs/dev/test-architecture.adoc)
+- Does the PR have unit & integration tests? (Yes/No)
+- Does the PR have documentation? (Yes/No)
+- Have you updated the [Changelog](https://github.com/openshift/odo/blob/main/Changelog.md)? (Yes/No)
 
 **How to test changes / Special notes to the reviewer**:
